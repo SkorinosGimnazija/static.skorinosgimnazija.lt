@@ -11,6 +11,7 @@ http {
   types_hash_max_size 2048;
   include mime.types;
   charset UTF-8;
+  server_tokens off;
   server {
     listen {{ $.PORT }};
     server_name  _;
@@ -19,7 +20,7 @@ http {
     port_in_redirect off;
 
     location / {
-      try_files $uri $uri/ =404;
+      try_files $uri $uri/ /index.html;
     }
 
     location /uploads/ { 
