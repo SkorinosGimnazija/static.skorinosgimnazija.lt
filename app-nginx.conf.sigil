@@ -1,3 +1,5 @@
+# https://github.com/dokku/heroku-buildpack-nginx/blob/master/conf/app-nginx.conf.sigil
+
 worker_processes 1;
 error_log stderr;
 pid nginx.pid;
@@ -15,7 +17,11 @@ http {
   server {
     listen {{ $.PORT }};
     server_name  _;
-    root /app/www;
+    {{ if ne $.NGINX_ROOT "" }}
+      root /app/www/{{ $.NGINX_ROOT }};
+    {{ else }}
+      root /app/www;
+    {{ end }}
     index index.html;
     port_in_redirect off;
 
