@@ -1,0 +1,14 @@
+{
+  "root": "static/",
+  "headers": {
+    "/**": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    }
+  },
+  "routes": {
+    "/uploads/*": "/"
+  },
+  "logging": {
+    "access": false
+  }
+}
